@@ -6,18 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    <div>Teachable Machine Image Model</div>
-<input type="file"
-    id="input" name="input"
-    accept="image/png, image/jpeg"
-    onchange="onFileSelected(event)"
->
-<img id="image" height="400px" width="auto">
-<button type="button" onclick="init()">Start</button>
-<div id="label-container"></div>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-<script type="text/javascript">
+    <h1>Teachable Machine Image Model</h1>
+    <div class="card">
+        <div class="input-image">
+            <input type="file"
+                id="input" name="input"
+                accept="image/png, image/jpeg"
+                onchange="onFileSelected(event)"
+            >
+            <img id="image">
+        </div>
+        <div id="label-container"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
@@ -38,6 +41,7 @@
         };
 
         reader.readAsDataURL(selectedFile);
+        init();
     }
 
     // Load the image model and setup the webcam
@@ -71,6 +75,41 @@
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
     }
-</script>
+    </script>
 </body>
+<style>
+    * {
+        font-family: arial, sans-serif;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .input-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+        width: 400px;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+
+    .input-image img {
+        width: 400px;
+        height: auto;
+    }
+
+    .input-image input {
+        position: absolute;
+        background: white;
+        border-radius: 4px;
+        padding: 4px;
+    }
+
+</style>
 </html>
