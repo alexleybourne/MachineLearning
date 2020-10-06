@@ -6,7 +6,6 @@
     <title>Rate My Setup</title>
 </head>
 <body>
-    <h1>Rate My Setup</h1>
     <div class="card">
         <div class="input-image-holder gradient">
             <div class="input-image">
@@ -22,6 +21,8 @@
             </div>
         </div>
         <div class="results">
+            <h1>Rate My Setup</h1>
+            <h2>Built with Googles Teachable Machine Learning Tool.</h2>
             <div class="metric">
                 <h3>Senior Dev</h3>
                 <div class="bar" id="bar0">
@@ -125,20 +126,27 @@
         width: 100%;
     }
 
-    h1 {
-        color: white;
-    }
-
     .card {
         background: white;
         border-radius: 20px;
         padding: 20px;
         width: 70vw;
         max-width: 1000px;
-        height: 600px;
+        height: 500px;
         display: flex;
         align-items: center;
         box-shadow: 4px 13px 30px 1px #00000030;
+    }
+
+    h1 {
+        margin: 2px;
+    }
+
+    h2 {
+        font-size: 14px;
+        margin-bottom: 40px;
+        font-weight: bold;
+        color: grey;
     }
 
     .input-image:hover > svg {
