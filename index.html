@@ -22,36 +22,42 @@
         </div>
         <div class="results">
             <h1>Rate My Setup</h1>
-            <h2>Built with Googles Teachable Machine Learning Tool.</h2>
-            <div class="metric">
-                <h3>Senior Dev</h3>
-                <div class="bar" id="bar0">
-                    <span class="bar-text">0%</span>
-                    <div  class="bar-inner"></div>
+            <h2>Built with Googles Teachable Machine Learning.</h2>
+            <h1 id="result"></h1>
+            <div class="data">
+                <div class="metric">
+                    <h3>Senior Dev</h3>
+                    <div class="bar" id="bar0">
+                        <span class="bar-text">0%</span>
+                        <div  class="bar-inner"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="metric">
-                <h3>Regular Dev</h3>
-                <div class="bar" id="bar1">
-                    <span  class="bar-text">0%</span>
-                    <div   class="bar-inner"></div>
+                <div class="metric">
+                    <h3>Regular Dev</h3>
+                    <div class="bar" id="bar1">
+                        <span  class="bar-text">0%</span>
+                        <div   class="bar-inner"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="metric">
-                <h3>Junior Dev</h3>
-                <div class="bar" id="bar2">
-                    <span  class="bar-text">0%</span>
-                    <div   class="bar-inner"></div>
+                <div class="metric">
+                    <h3>Junior Dev</h3>
+                    <div class="bar" id="bar2">
+                        <span  class="bar-text">0%</span>
+                        <div   class="bar-inner"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="metric">
-                <h3>Rookie</h3>
-                <div class="bar" id="bar3">
-                    <span  class="bar-text">0%</span>
-                    <div   class="bar-inner"></div>
+                <div class="metric">
+                    <h3>Rookie</h3>
+                    <div class="bar" id="bar3">
+                        <span  class="bar-text">0%</span>
+                        <div   class="bar-inner"></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="info">
+        <p>Created by Alex Leybourne</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
@@ -96,12 +102,16 @@
 
     async function predict(file) {
         // predict can take in an image, video or canvas html element
+        let resultName = '';
+        let lastValue = 0;
         const prediction = await model.predict(file);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            const predictionValue = prediction[i].probability.toFixed(2) * 100
-            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML=`${predictionValue}%`
-            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width=`${predictionValue}%`
+            const predictionValue = `${prediction[i].probability.toFixed(2) * 100}%`;
+            resultName = prediction[i].probability.toFixed(2) > lastValue ? prediction[i].className : resultName;
+            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML = predictionValue;
+            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width = predictionValue;
+            document.getElementById('result').innerHTML = `You are a ${resultName}`;
         }
     }
     </script>
@@ -208,8 +218,11 @@
         justify-content: center;
     }
 
-    .metric {
+    .data {
         width: 80%;
+    }
+
+    .metric {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -254,6 +267,14 @@
 
     #bar3 div {
         background: rgb(0, 255, 136);
+    }
+
+    .info {
+        color: white;
+        font-weight: bold;
+        position: fixed;
+        bottom: 6px;
+        right: 30px;
     }
 
 </style>
