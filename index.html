@@ -82,11 +82,31 @@
         font-family: arial, sans-serif;
     }
 
+    html {
+        background: #36D1DC;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
     body {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 70vw;
+        height: 600px;
     }
 
     .input-image {
@@ -97,6 +117,7 @@
         width: 400px;
         overflow: hidden;
         border-radius: 6px;
+        box-shadow: 4px 13px 30px 1px #45b3df90;
     }
 
     .input-image img {
