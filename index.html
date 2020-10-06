@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="gradient">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
 <body>
     <h1>Teachable Machine Image Model</h1>
     <div class="card">
-        <div class="input-image">
+        <div class="input-image gradient">
             <input type="file"
                 id="input" name="input"
                 accept="image/png, image/jpeg"
@@ -82,10 +82,10 @@
         font-family: arial, sans-serif;
     }
 
-    html {
+    .gradient {
         background: #36D1DC;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to bottom, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: -webkit-linear-gradient(to bottom right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
     body {
@@ -103,10 +103,12 @@
 
     .card {
         background: white;
-        border-radius: 10px;
+        border-radius: 20px;
         padding: 20px;
         width: 70vw;
         height: 600px;
+        display: flex;
+        align-items: center;
     }
 
     .input-image {
@@ -116,8 +118,9 @@
         height: 400px;
         width: 400px;
         overflow: hidden;
-        border-radius: 6px;
-        box-shadow: 4px 13px 30px 1px #45b3df90;
+        border-radius: 20px;
+        box-shadow: 4px 13px 30px 1px #3c9abfb8;
+        transform: translateX(-80px);
     }
 
     .input-image img {
