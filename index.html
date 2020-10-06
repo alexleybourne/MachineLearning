@@ -18,6 +18,7 @@
                     onchange="onFileSelected(event)"
                 >
                 <img id="image">
+                <img id="image-bg">
             </div>
         </div>
         <div class="results">
@@ -74,10 +75,13 @@
         var reader = new FileReader();
 
         var imgTag = document.getElementById("image");
+        var imgTag2 = document.getElementById("image-bg");
         imgTag.title = selectedFile.name;
+        imgTag2.title = selectedFile.name;
 
         reader.onload = function(event) {
             imgTag.src = event.target.result;
+            imgTag2.src = event.target.result;
         };
 
         reader.readAsDataURL(selectedFile);
@@ -181,8 +185,18 @@
 
     .input-image img {
         width: auto;
-        min-height: 400px;
+        max-height: 400px;
         object-fit: cover;
+    }
+
+    #image-bg {
+        position: absolute;
+        z-index: -1;
+        width: 500px;
+        height: 500px;
+        object-fit: cover;
+        opacity: 0.1;
+        filter: blur(2px);
     }
 
     .input-image input {
