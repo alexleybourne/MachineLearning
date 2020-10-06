@@ -23,7 +23,6 @@
         <div class="results">
             <h1>Rate My Setup</h1>
             <h2>Built with Googles Teachable Machine Learning.</h2>
-            <h1 id="result"></h1>
             <div class="data">
                 <div class="metric">
                     <h3>Senior Dev</h3>
@@ -102,16 +101,13 @@
 
     async function predict(file) {
         // predict can take in an image, video or canvas html element
-        let resultName = '';
-        let lastValue = 0;
         const prediction = await model.predict(file);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             const predictionValue = `${prediction[i].probability.toFixed(2) * 100}%`;
-            resultName = prediction[i].probability.toFixed(2) > lastValue ? prediction[i].className : resultName;
+            const value = prediction[i].probability.toFixed(2);
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML = predictionValue;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width = predictionValue;
-            document.getElementById('result').innerHTML = `You are a ${resultName}`;
         }
     }
     </script>
