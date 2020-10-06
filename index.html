@@ -103,9 +103,8 @@
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(file);
         for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            const classPrediction = prediction[i].className;
             const predictionValue = `${prediction[i].probability.toFixed(2) * 100}%`;
-            const value = prediction[i].probability.toFixed(2);
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML = predictionValue;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width = predictionValue;
         }
@@ -174,7 +173,7 @@
         height: 150px;
         width: 150px;
         opacity: 0.6;
-        transition-duration: 0.3s;
+        transition-duration: 0.2s;
     }
 
     .input-image img {
@@ -271,6 +270,39 @@
         position: fixed;
         bottom: 6px;
         right: 30px;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        body { width: auto }
+
+        .card {
+            flex-direction: column;
+            height: auto;
+            width: 80vw;
+        }
+
+        .input-image-holder {
+            position: relative;
+            transform: none;
+            margin-bottom: 50px;
+            width: 70vw;
+            height: 70vw;
+        }
+
+        .results {
+            margin-left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .data {
+            width: 95%;
+        }
+
+        .metric {
+            flex-direction: column;
+        }
     }
 
 </style>
