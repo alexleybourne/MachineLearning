@@ -272,7 +272,31 @@
         right: 30px;
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 1300px) {
+
+        .results {
+            width: 45%;
+            margin-left: 55%;
+        }
+
+        .metric {
+            flex-direction: column;
+        }
+
+        .bar {
+            width: 200px;
+        }
+
+        .bar-text {
+            width: 200px !important;
+        }
+
+        h3 {
+            margin-bottom: 2px;
+        }
+    }
+
+    @media only screen and (max-width: 850px) {
 
         body { width: auto }
 
@@ -291,10 +315,6 @@
             height: 80vw;
         }
 
-        h3 {
-            margin-bottom: 2px;
-        }
-
         .results {
             margin-left: 0;
             width: 100%;
@@ -305,15 +325,19 @@
             width: 95%;
         }
 
-        .metric {
-            flex-direction: column;
-        }
-
         .info {
             position: relative;
             bottom: 0px;
             transform: translateX(8vw);
             text-align: center;
+        }
+
+        .bar {
+            width: 300px;
+        }
+
+        .bar-text {
+            width: 300px !important;
         }
     }
 
