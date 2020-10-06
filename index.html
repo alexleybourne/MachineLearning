@@ -145,6 +145,7 @@
 
     h1 {
         margin: 2px;
+        text-align: center;
     }
 
     h2 {
@@ -152,6 +153,7 @@
         margin-bottom: 40px;
         font-weight: bold;
         color: grey;
+        text-align: center;
     }
 
     .input-image:hover > svg {
@@ -196,7 +198,9 @@
         align-items: center;
         justify-content: center;
         height: 400px;
-        width: 400px;
+        max-width: 400px;
+        height: 42vw;
+        max-height: 400px;
         overflow: hidden;
         border-radius: 20px;
         box-shadow: 4px 13px 30px 1px #3c9abfb8;
@@ -296,7 +300,7 @@
         }
     }
 
-    @media only screen and (max-width: 850px) {
+    @media only screen and (max-width: 600px) {
 
         body { width: auto }
 
