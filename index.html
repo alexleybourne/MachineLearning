@@ -25,28 +25,28 @@
             <div class="metric">
                 <h3>Senior Dev</h3>
                 <div class="bar" id="bar0">
-                    <span class="bar-text">90%</span>
+                    <span class="bar-text">0%</span>
                     <div  class="bar-inner"></div>
                 </div>
             </div>
             <div class="metric">
                 <h3>Regular Dev</h3>
                 <div class="bar" id="bar1">
-                    <span  class="bar-text">50%</span>
+                    <span  class="bar-text">0%</span>
                     <div   class="bar-inner"></div>
                 </div>
             </div>
             <div class="metric">
                 <h3>Junior Dev</h3>
                 <div class="bar" id="bar2">
-                    <span  class="bar-text">10%</span>
+                    <span  class="bar-text">0%</span>
                     <div   class="bar-inner"></div>
                 </div>
             </div>
             <div class="metric">
                 <h3>Rookie</h3>
                 <div class="bar" id="bar3">
-                    <span  class="bar-text">30%</span>
+                    <span  class="bar-text">0%</span>
                     <div   class="bar-inner"></div>
                 </div>
             </div>
@@ -98,9 +98,9 @@
         const prediction = await model.predict(file);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            const predictionValue = prediction[i].probability.toFixed(2)
-            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML=predictionValue
-            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width=`${predictionValue * 100}%`
+            const predictionValue = prediction[i].probability.toFixed(2) * 100
+            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML=`${predictionValue}%`
+            document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width=`${predictionValue}%`
         }
     }
     </script>
@@ -232,23 +232,19 @@
         font-weight: bold;
     }
 
-    #bar1 div {
-        /* width: 70%; */
+    #bar0 div {
         background: rgb(0, 157, 255);
     }
 
-    #bar2 div {
-        /* width: 50%; */
+    #bar1 div {
         background: rgb(255, 0, 119);
     }
 
-    #bar3 div {
-        /* width: 10%; */
+    #bar2 div {
         background: rgb(170, 0, 255);
     }
 
-    #bar4 div {
-        /* width: 30%; */
+    #bar3 div {
         background: rgb(0, 255, 136);
     }
 
