@@ -9,7 +9,7 @@
     <div class="card">
         <div class="input-image-holder gradient">
             <div class="input-image">
-                <svg width="864" height="864" viewBox="0 0 864 864" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg id="plus-icon" width="864" height="864" viewBox="0 0 864 864" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M432 280V583M280 432H583M824 432C824 648.496 648.496 824 432 824C215.504 824 40 648.496 40 432C40 215.504 215.504 40 432 40C648.496 40 824 215.504 824 432Z" stroke="white" stroke-width="80" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>    
                 <input type="file"
@@ -82,6 +82,7 @@
         reader.onload = function(event) {
             imgTag.src = event.target.result;
             imgTag2.src = event.target.result;
+            document.getElementById("plus-icon").classList.add('svg-small');
         };
 
         reader.readAsDataURL(selectedFile);
@@ -180,7 +181,13 @@
         height: 150px;
         width: 150px;
         opacity: 0.6;
-        transition-duration: 0.2s;
+        transition-duration: 0.4s;
+    }
+
+    .svg-small {
+        left: -32px;
+        bottom: 27px;
+        height: 39px !important;
     }
 
     .input-image img {
