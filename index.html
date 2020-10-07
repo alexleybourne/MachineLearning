@@ -22,6 +22,7 @@
                     accept="image/png, image/jpeg"
                     onchange="onFileSelected(event)"
                 >
+                <div id="scanner"></div>
                 <img id="image">
                 <img id="image-bg">
             </div>
@@ -114,7 +115,7 @@
         const prediction = await model.predict(file);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction = prediction[i].className;
-            const predictionValue = `${prediction[i].probability.toFixed(2) * 100}%`;
+            const predictionValue = `${(prediction[i].probability * 100).toFixed(0) }%`;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML = predictionValue;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width = predictionValue;
         }
@@ -179,6 +180,13 @@
         font-weight: bold;
         color: grey;
         text-align: center;
+    }
+
+    #scanner {
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        background-color: rgba(59, 154, 255, 0.797);
     }
 
     .input-image:hover > svg {
