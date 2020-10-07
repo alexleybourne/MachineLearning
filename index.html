@@ -122,6 +122,8 @@
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML = predictionValue;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width = predictionValue;
         }
+        // stop scanner animation
+        document.getElementById("scanner").classList.remove('scanner-active');
     }
 
     const sleep = (time) => new Promise(r => setTimeout(r, time))
@@ -215,6 +217,7 @@
     }
 
     .input-image svg {
+        z-index: 1;
         position: absolute;
         height: 150px;
         width: 150px;
@@ -247,6 +250,7 @@
     }
 
     .input-image input {
+        z-index: 2;
         position: absolute;
         opacity: 0;
         cursor: pointer;
