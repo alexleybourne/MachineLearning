@@ -55,35 +55,8 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         <div class="results">
             <h1>Rate My Setup</h1>
             <h2>Built with Googles Teachable Machine Learning.</h2>
-            <div class="data">
-                <div class="metric">
-                    <h3>Senior Dev</h3>
-                    <div class="bar" id="bar0">
-                        <span class="bar-text">0%</span>
-                        <div  class="bar-inner"></div>
-                    </div>
-                </div>
-                <div class="metric">
-                    <h3>Regular Dev</h3>
-                    <div class="bar" id="bar1">
-                        <span  class="bar-text">0%</span>
-                        <div   class="bar-inner"></div>
-                    </div>
-                </div>
-                <div class="metric">
-                    <h3>Junior Dev</h3>
-                    <div class="bar" id="bar2">
-                        <span  class="bar-text">0%</span>
-                        <div   class="bar-inner"></div>
-                    </div>
-                </div>
-                <div class="metric">
-                    <h3>Rookie</h3>
-                    <div class="bar" id="bar3">
-                        <span  class="bar-text">0%</span>
-                        <div   class="bar-inner"></div>
-                    </div>
-                </div>
+            <div class="data" id="data">
+                <!-- Filled by First Load Function -->
             </div>
         </div>
     </div>
@@ -154,9 +127,22 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         const metadataURL = URL + "metadata.json";
         model = await tmImage.load(modelURL, metadataURL);
         const labels = model.getClassLabels();
+        const data = document.getElementById('data');
 
+        // console.log(message);
+
+        console.log('Labels:')
         for (var i = 0; i < labels.length; i++) {
             console.log(labels[i]);
+            data.innerHTML = data.innerHTML + `
+                <div class="metric">
+                    <h3>${labels[i]}</h3>
+                    <div class="bar" id="bar${[0]}">
+                        <span class="bar-text">0%</span>
+                        <div  class="bar-inner"></div>
+                    </div>
+                </div>
+            `
         };
     }
 
@@ -165,7 +151,6 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         const prediction = await model.predict(file);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction = prediction[i].className;
-            console.log(classPrediction);
             const predictionValue = `${(prediction[i].probability * 100).toFixed(0) }%`;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML = predictionValue;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width = predictionValue;
