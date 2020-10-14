@@ -9,7 +9,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary Meta Tags -->
-    <title>Rate My Setup</title>
+    <title>ML Vision</title>
     <meta name="title" content="Rate My Setup">
     <meta name="description" content="A machine learning experiment built to rate your coding setup.">
 
@@ -80,14 +80,13 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
-    // VVVVVVVVV PUT YOUR LINK HERE VVVVVVVVV
     // the link to your model provided by Teachable Machine export panel
+    // VVVVVVVVV PUT YOUR LINK HERE VVVVVVVVV
+    const URL = "https://teachablemachine.withgoogle.com/models/8TuehYXuV/" // Dog or Cat
     // const URL = "https://teachablemachine.withgoogle.com/models/6fdR3a5Um/"; // Rate your setup model
 
-    const URL = "https://teachablemachine.withgoogle.com/models/8TuehYXuV/" // Dog or Cat
-
     // VVVVVVVVV Name The Project Here VVVVVVVVV
-    const projectTitle = "Rate your Setup"
+    const projectTitle = "Dog or Cat"
 
     let model, labelContainer, maxPredictions;
 
@@ -135,6 +134,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         model = await tmImage.load(modelURL, metadataURL);
         const labels = model.getClassLabels();
         document.getElementById('title').innerHTML = projectTitle;
+        document.title = projectTitle;
         const data = document.getElementById('data');
 
         console.log('Created By Alex Leybourne 2020');
