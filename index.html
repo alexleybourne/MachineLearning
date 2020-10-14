@@ -35,6 +35,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         <div class="double-bounce1"></div>
         <div class="double-bounce2"></div>
     </div>
+    <p class="loading-text" id="loading-text">Loading ML Model</p>
     <div class="loading gradient" id="loading"></div>
     <div class="card">
         <div class="input-image-holder gradient">
@@ -53,7 +54,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
             </div>
         </div>
         <div class="results">
-            <h1>Rate My Setup</h1>
+            <h1 id="title"></h1>
             <h2>Built with Googles Teachable Machine Learning.</h2>
             <div class="data" id="data">
                 <!-- Filled by First Load Function -->
@@ -79,8 +80,11 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
+    // VVVVVVV PUT YOUR LINK HERE VVVVVVV
     // the link to your model provided by Teachable Machine export panel
     const URL = "https://teachablemachine.withgoogle.com/models/6fdR3a5Um/";
+
+    const projectTitle = "Rate your Setup"
 
     let model, labelContainer, maxPredictions;
 
@@ -127,9 +131,11 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         const metadataURL = URL + "metadata.json";
         model = await tmImage.load(modelURL, metadataURL);
         const labels = model.getClassLabels();
+        document.getElementById('title').innerHTML = projectTitle;
         const data = document.getElementById('data');
 
-        // console.log(message);
+        console.log('Created By Alex Leybourne 2020');
+        console.log('Using Googles Teachable Machine')
 
         console.log('Labels:')
         for (var i = 0; i < labels.length; i++) {
@@ -163,11 +169,13 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
 
     async function loaded() {
         await firstLoad();
-        const loading = document.getElementById('loading')
-        const spinner = document.getElementById('spinner')
+        const loading = document.getElementById('loading');
+        const spinner = document.getElementById('spinner');
+        const loadingText = document.getElementById('loading-text');
         loading.classList.add('hide');
         await sleep(1000);
         spinner.style.opacity = 0;
+        loadingText.style.opacity = 0;
         await sleep(1000);
         loading.classList.add('hidden');
         spinner.classList.add('hidden');
@@ -202,7 +210,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         padding: 20px;
         width: 70vw;
         max-width: 1000px;
-        height: 500px;
+        min-height: 500px;
         display: flex;
         align-items: center;
         box-shadow: 4px 13px 30px 1px #00000030;
@@ -384,6 +392,17 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
 
     .info svg {
         margin: 0 6px;
+    }
+
+    .loading-text {
+        color: white;
+        position: absolute;
+        transform: translateY(100px);
+        z-index: 12;
+        font-weight: bold;
+        font-size: 1.4rem;
+        text-align: center;
+        opacity: 0.8;
     }
 
     @media only screen and (max-width: 1300px) {
