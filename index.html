@@ -143,9 +143,21 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         // or files from your local hard drive
         // Note: the pose library adds "tmImage" object to your window (window.tmImage)
         model = await tmImage.load(modelURL, metadataURL);
+
         maxPredictions = model.getTotalClasses();
 
         predict(document.getElementById('image'))
+    }
+
+    async function firstLoad() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+        model = await tmImage.load(modelURL, metadataURL);
+        const labels = model.getClassLabels();
+
+        for (var i = 0; i < labels.length; i++) {
+            console.log(labels[i]);
+        };
     }
 
     async function predict(file) {
@@ -153,6 +165,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         const prediction = await model.predict(file);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction = prediction[i].className;
+            console.log(classPrediction);
             const predictionValue = `${(prediction[i].probability * 100).toFixed(0) }%`;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-text' )[0].innerHTML = predictionValue;
             document.getElementById(`bar${i}`).getElementsByClassName( 'bar-inner' )[0].style.width = predictionValue;
@@ -164,6 +177,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
     const sleep = (time) => new Promise(r => setTimeout(r, time))
 
     async function loaded() {
+        await firstLoad();
         const loading = document.getElementById('loading')
         const spinner = document.getElementById('spinner')
         loading.classList.add('hide');
