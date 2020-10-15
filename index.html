@@ -56,7 +56,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
             </div>
             <div class="results">
                 <h1 id="title"></h1>
-                <h2>Built with Googles Teachable Machine Learning.</h2>
+                <h2 id="sub-title">Built with Googles Teachable Machine Learning.</h2>
                 <div class="data" id="data">
                     <!-- Filled by First Load Function -->
                 </div>
@@ -155,7 +155,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         for (var i = 0; i < labels.length; i++) {
             console.log(labels[i]);
             data.innerHTML = data.innerHTML + `
-                <div class="metric">
+                <div class="metric slide-in-bottom" style="animation-delay: ${1.2 + i /2}s">
                     <h3>${labels[i]}</h3>
                     <div class="bar" id="bar${[i]}">
                         <span class="bar-text">0%</span>
@@ -207,6 +207,12 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         background: #36D1DC;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to bottom right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to bottom right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .slide-in-bottom {
+        -webkit-animation: slide-in-bottom 0.5s both;
+                animation: slide-in-bottom 0.5s both;
+                transition-duration: 1s;
     }
 
     body {
@@ -629,6 +635,19 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         }  100% { 
             top: 420px;
         }
+    }
+
+    @keyframes slide-in-bottom {
+    0% {
+        -webkit-transform: translateY(100px);
+                transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        opacity: 1;
+    }
     }
 </style>
 </html>
