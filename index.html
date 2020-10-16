@@ -10,21 +10,21 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary Meta Tags -->
     <title>ML Vision</title>
-    <meta name="title" content="Rate My Setup">
-    <meta name="description" content="A machine learning experiment built to rate your coding setup.">
+    <meta name="title" content="ML Photo Scanner">
+    <meta name="description" content="Scan photos using machine learning.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alexleybourne.github.io/MachineLearning/">
-    <meta property="og:title" content="Rate My Setup">
-    <meta property="og:description" content="A machine learning experiment built to rate your coding setup.">
+    <meta property="og:title" content="ML Photo Scanner">
+    <meta property="og:description" content="Scan photos using machine learning.">
     <meta property="og:image" content="https://i.ibb.co/CVrk1Wf/Screen-Shot-2020-10-07-at-7-18-45-pm.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://alexleybourne.github.io/MachineLearning/">
-    <meta property="twitter:title" content="Rate My Setup">
-    <meta property="twitter:description" content="A machine learning experiment built to rate your coding setup.">
+    <meta property="twitter:title" content="ML Photo Scanner">
+    <meta property="twitter:description" content="Scan photos using machine learning.">
     <meta property="twitter:image" content="https://i.ibb.co/CVrk1Wf/Screen-Shot-2020-10-07-at-7-18-45-pm.png">
 
     <!-- favicon -->
@@ -56,7 +56,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
             </div>
             <div class="results">
                 <h1 id="title"></h1>
-                <h2 id="sub-title">Built with Googles Teachable Machine Learning.</h2>
+                <h2>Built with Googles Teachable Machine Learning.</h2>
                 <div class="data" id="data">
                     <!-- Filled by First Load Function -->
                 </div>
@@ -155,7 +155,7 @@ follow me on twitter :) https://twitter.com/AlexLeybourne
         for (var i = 0; i < labels.length; i++) {
             console.log(labels[i]);
             data.innerHTML = data.innerHTML + `
-                <div class="metric slide-in-bottom" style="animation-delay: ${1.2 + i /2}s">
+                <div class="metric slide-in-bottom" style="animation-delay: ${1.2 + i}s">
                     <h3>${labels[i]}</h3>
                     <div class="bar" id="bar${[i]}">
                         <span class="bar-text">0%</span>
