@@ -1,12 +1,15 @@
-# MachineLearning
-Testing out Machine Learning with Googles Teachable Machine
+# Machine Learning Template
 
-Link:
-https://alexleybourne.github.io/MachineLearning/
+![Preview](https://i.ibb.co/TgqZKXz/Screen-Shot-2020-10-17-at-5-18-10-pm-1.jpg)
 
-This model was trained on 800 photos of peoples computer setups and then is judged based on the gatekeeping standards of people on twitter.
+This is a template for using googles teachable machine image projects.
+Create a model and then add in your link and share it with your friends!
 
-Tweet that inspired this:
-https://twitter.com/AlexLeybourne/status/1312922916275716096
+Simply add in the link to your ML Image Model
+ie: `const  URL  =  "https://teachablemachine.withgoogle.com/models/8TuehYXuV/"`
 
+And then add a title like so
+`const  projectTitle  =  "Dog Or Cat?"`
 
+Live Site Link:
+[alexleybourne.github.io/MachineLearning/](https://alexleybourne.github.io/MachineLearning/)
