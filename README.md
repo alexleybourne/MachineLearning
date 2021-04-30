@@ -13,7 +13,8 @@ Simply add in the link to your ML Image Model 🔗
 ie: `const  URL  =  "https://teachablemachine.withgoogle.com/models/8TuehYXuV/"`
 
 And then add a title like so:
+
 `const  projectTitle  =  "Dog Or Cat?"`
 
-Live Site Link:
+Live Site Link ⚡️
 [alexleybourne.github.io/MachineLearning/](https://alexleybourne.github.io/MachineLearning/)
